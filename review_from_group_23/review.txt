@@ -1,0 +1,19 @@
+CS 5220 Peer Review for Group 25 by Group 23
+
+Seems like you’ll have been doing quite a lot of experimenting in fine tuning.
+
+1.	Multi-Level Blocking: You have used Multi-Level Blocking effectively and the explanation for the respective block sizes for fitting in different caches sounds quite plausible. I’m interested to see how much boost in performance you’ll gained just by using this optimization alone. The issues we were facing in blocking was that we had block sizes as powers of two, and for some reason we faced a dip in performance for matrix sizes of 512 and 1024 respectively.
+
+2.	Copy Optimization: I guess the Copy Optimization might run faster if the matrix A is copied to buffer in a row-major form, while matrix B is copied in a column major form. This would allow you to compute C using a series of dot products of rows of A and columns of B, which I guess has a lot of potential to be vectorized. Also, the roofline analysis I guess might show that the naive matmul is more memory bound than compute bound. Hence, the Copy Optimization would give us the most speed up.
+ 
+Scope for further optimization:
+
+1.	Loop Unrolling: Maybe the above mentioned copy optimization for copying small matrix blocks might make it possible to unroll the innermost loop to jump by a step size of ‘k’, where ‘k’ elements could fit into a vector register to perform a dot product. Even we as a group are still figuring this out, so I guess we have scope for improvement in this aspect.
+
+2.	Automatic Parameter Tuning: Your heading in the right direction and I strongly agree that manual tuning is not the way to go as many parameters have strong/weak correlations respectively. We could use Roofline Analysis to figure out for what aspects it makes sense to tune. Again, we too are still figuring out how to go about it.
+
+Good Going!
+
+ 
+
+
