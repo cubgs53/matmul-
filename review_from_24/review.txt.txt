@@ -1,0 +1,8 @@
+Peer review for Group 25 from Group 24
+
+1) The group did well by exploring different levels of blocking. This is something we are looking to do with our own group. The code also seems to have benefited from copy optimization which is something our groups had in common.
+2) The group could improve by:
+- Investigating different orderings of the loop indices. We found there was a significant improvement by reordering the dimensions that are looped since it may reduce the stride distance between consecutive memory fetches.
+- It's doubtful how much manually unrolling the loops will help. If the loop iterations are constructed correctly, the compiler should be able to carry out loop unrolls automatically if the right flags are supplied. Perhaps try the "-unroll-agressive" flag.
+- We found that supplying -xCORE-AVX2 flag to the compiler improved the performance of our code a lot, so there was definitely AVX2 instructions being generated without us having to write any manually. It is unclear why it doesn't seem to work for group 25.
+- We couldn't seem to find the tuned code in the group's repository. Although the course staff said the code does not need to be committed at this phase, we feel being able to see the code tuned so far would have helped us write a better review and also perhaps could have allowed us to help the group by spotting why compiler optimizations etc. aren't working for them.
